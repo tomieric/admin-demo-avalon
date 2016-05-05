@@ -1,0 +1,42 @@
+{
+  "name": "e-admin-mvvm",
+  "version": "1.0.0",
+  "description": "avalon+e-admin",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "dev": "webpack",
+    "deploy": "webpack --config webpack.config.production.js",
+    "dev-server": "webpack-dev-server --inline --colors",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git-frontpay.cn/e-admin-mvvm.git"
+  },
+  "keywords": [
+    "e-admin",
+    "avalon",
+    "mvvm"
+  ],
+  "author": "tommyshao",
+  "license": "MIT",
+  "dependencies": {
+    "avalonjs": "git+https://github.com/RubyLouvre/avalon2.git",
+    "clean-webpack-plugin": "^0.1.9",
+    "css-loader": "^0.23.1",
+    "domReady": "git+https://github.com/requirejs/domReady.git",
+    "es5-shim": "^4.5.8",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.16.1",
+    "import-loader": "0.0.1",
+    "jquery": "^2.2.3",
+    "less": "^2.6.1",
+    "less-loader": "^2.2.3",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
