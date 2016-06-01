@@ -1,0 +1,27 @@
+.ms-controller {
+  visibility: hidden;
+}
+
+body {
+  background: #f00;
+}
+
+@leftWidth: 150px;
+
+#dm-slide {
+  width: @leftWidth;
+  height: 100%;
+  margin-right: -@leftWidth;
+
+  .m-nav {
+    margin-top: 50px;
+  }
+}
+
+#dm-main {
+  height: 100%;
+  .g-mn1c {
+    height: 100%;
+    margin-left: @leftWidth;
+  }
+}

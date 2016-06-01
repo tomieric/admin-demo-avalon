@@ -1,0 +1,34 @@
+<div ms-controller="login">
+<div class="login-main">
+    <div class="login-logo"><img ms-attr-src="{{ imgs.logo }}"></div>
+    <form class="form" ms-widget="validation">
+        <div class="item">
+            <span class="filename">账户名：</span>
+            <div class="ui-input-box">
+                <input type="text" class="ui-input" ms-duplex-required="username" data-duplex-message="账户名不能为空">
+                <span class="icon-bg name"></span>
+            </div>
+        </div>
+        <div class="item">
+            <span class="filename">密码：</span>
+            <div class="ui-input-box">
+                <input type="password" class="ui-input" ms-duplex-required="password" data-duplex-message="密码不能为空">
+                <span class="icon-bg password"></span>
+            </div>
+        </div>
+        <div class="item">
+            <span class="filename">验证码：</span>
+            <div class="ui-input-box"><input type="text" class="ui-input code-input" ms-duplex-required="vcode" data-duplex-message="验证码不能为空"><span class="code-pic"><img ms-click="change($event, imgs.code)" ms-attr-src="{{ imgs.code }}"></span>
+                <span class="icon-bg code"></span>
+            </div>
+        </div>
+        <div class="login-error-tips" ms-if="invalid">
+           {{ invalidMsg }}
+        </div>
+        <div class="item">
+            <input type="submit" ms-attr-disabled="{{ submiting }}" value="登录" class="login-btn">
+        </div>
+    </form>
+</div>
+<div class="login-bg"><img ms-attr-src="{{ imgs.bgImg }}" width="100%" height="100%"></div>
+</div>
