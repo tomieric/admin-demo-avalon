@@ -1,0 +1,2 @@
+/*! v1.0 Sun Aug 28 2016 12:29:14 GMT+0800 (CST) auth by tommyshao */
+webpackJsonp([6],{53:function(n,e,o){avalon.define({$id:"workspace",channel:"我的工作台"});n.exports={template:o(54),controller:avalon.controller("index",function(n){})}},54:function(n,e){n.exports='<div class="layer" ms-controller="workspace">\n\n  {{ channel }}\n\n</div>\n'}});

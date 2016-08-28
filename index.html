@@ -8,6 +8,9 @@
   <meta name="keywords" content="E+标准版后台管理">
   <meta name="description" content="E+标准版后台管理">
   <meta name="fragment" content="!" />
+  <style>
+    [ms-controller]{ visibility: hidden; }
+  </style>
   <!--[if lt IE9]>
   <!--<script src="/node_modules/es5-shim/es5-shim.min.js"></script>-->
   <script src="//cdn.bootcss.com/es5-shim/4.5.8/es5-shim.min.js"></script>
@@ -22,10 +25,11 @@
         };
     }
   </script>
-  <script src="http://rap.taobao.org/rap.plugin.js?projectId=4074"></script>
+  <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://rap.taobao.org/rap.plugin.js?projectId=4074&mode=1"></script>
 <link rel="shortcut icon" href="favicon.ico"></head>
 <body ms-controller="App">
   <div ms-view=""></div>
-  <div ms-view="footer"></div>
-<script src="vendor.bundle.js"></script><script src="bundle.a6b52388f249251a6e32.js"></script></body>
+  <div class="footer" ms-view="footer"></div>
+<script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="bundle.a819bb17802f4f79a220.js"></script></body>
 </html>
