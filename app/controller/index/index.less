@@ -1,27 +1,73 @@
-.ms-controller {
-  visibility: hidden;
-}
 
-body {
-  background: #f00;
-}
+/*渠道*/
+.channel-box{padding: 5px 10px 5px 0; margin-left: 15px; position: relative; /*width: 875px*/}
+.channel-box .item{position:absolute; left: 0; top: 17px}
+.channel-box .channel-list{padding: 0 0 0 50px; /*width: 737px;*/ margin-right: 80px; height: 36px; overflow: hidden; }
+.channel-box .channel-list li{display: inline; float: left; width: 90px; padding: 10px 0 10px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.channel-box .channel-list li .checkbox{margin-right: 5px; vertical-align: middle;}
+.channel-box .more{background: url(../../global/images/icon-down.png) no-repeat 60px 10px ;width: 69px;  height: 24px; line-height: 24px; border: 1px solid #35bac4; color: #35bac4; display: block; position: absolute; right: 0px ; top: 10px; padding:0 0 0 5px}
+.channel-box .more.up{background: url(../../global/images/icon-down.png) no-repeat 60px 10px ; padding:0 0 0 15px; width: 59px}
+.channel-box .channel-scroll{height: auto; }
+.channel-btn{padding: 10px 0 10px 0; margin: 0 0 0 15px; border-bottom: 1px solid #dad9da;  border-top: 1px dashed #d7d7d7;}
+.channel-btn .btn{display: block; background: #deb85c; height: 26px; line-height: 26px; border: 1px solid #cfa747; width: 76px; text-align: center; color: #14191e; margin: 0 0 0 50px;}
+.channel-btn .btn.disabled{ background: #e5e4e5; border: 1px solid #e5e4e5; color: #999;}
 
-@leftWidth: 150px;
+/*当天数据*/
+.data-survey{/*width: 910px;*/ margin-bottom: -20px; margin-right: -20px; }
+.data-survey li{display: inline; float: left; margin-bottom: 20px; /*width: 213px;*/ width: 25%; min-height: 240px; /*height: 190px;*/ /*margin-right: 11px;*/ text-align: center;}
+.data-survey li .shadow-bg {margin-right:20px;}
+.data-survey .item{height: 38px; line-height: 32px; padding: 10px 0 0 0; color: #fff; font-size: 14px; font-weight: bold; }
+.data-survey .data1 .item{background: #35bac4;}
+.data-survey .data2 .item{background: #9586b4;}
+.data-survey .data3 .item{background: #e2b979;}
+.data-survey .data4 .item{background: #dc937d;}
+.data-survey .icon-bg{width: 31px; height: 31px; display: inline-block;}
+.data-survey .icon1{background-position: 0 -36px;}
+.data-survey .icon2{background-position: -37px -36px;}
+.data-survey .icon3{background-position: -71px -36px;}
+.data-survey .icon4{background-position: -104px -36px;}
+.data-survey .txt{display: inline-block;  vertical-align: top; padding-left: 5px}
+.data-survey .info{height: 120px; background-position: center top; background-repeat: no-repeat;  color: #777}
+.data-survey .info1{background-image: url(../../global/images/item1.png);}
+.data-survey .info2{background-image: url(../../global/images/item2.png);}
+.data-survey .info3{background-image: url(../../global/images/item3.png);}
+.data-survey .info4{background-image: url(../../global/images/item4.png);}
+.data-survey .info .num{  font-size: 20px; padding:25px 0 5px 0; }
+.data-survey .info .num span{display: inline-block; vertical-align: -6px;}
+.data-survey .up{background-position: -185px -1px;width: auto; height: auto; font-size: 16px; padding:0 0 0 20px; color: #fa8564;}
+.data-survey .up-other{color: #fa8564; }
+.data-survey .down{background-position: -185px -26px; width: auto; height: auto; font-size: 16px; padding:0 0 0 20px; color: #4bc27a;}
+.data-survey .tips{ padding: 10px 0 15px; border-top: 1px solid #e6e6e6; background: #f5f5f6; /*height: 46px;*/ }
+.data-survey .tips .left ,.data-survey .tips .right{ float: none; display: inline-block; width: 105px;height: 46px; }
+.data-survey .tips .left{border-right:1px solid #e6e6e6}
+.data-survey .tips .date{color: #aaa; padding: 6px 0 3px 0}
 
-#dm-slide {
-  width: @leftWidth;
-  height: 100%;
-  margin-right: -@leftWidth;
+/*交易趋势*/
+.trade-tab{border-left: 1px solid #dadada; margin: 0 0 20px 0}
+.trade-tab li{display: inline; float: left; border: 1px solid #dadada; border-left: none; /*width: 220px;*/ width: 25%; box-sizing: border-box; height: 74px; text-align: center; cursor: pointer;}
+.trade-tab li .num{font-size: 18px; color: #666; padding: 15px 0 5px 0;}
+.trade-tab li .no-num{color: #999; font-size: 12px; padding: 22px 0 5px 0;}
+.trade-tab li .title{color: #777;}
+.trade-tab li.cur{border-top:3px solid #35bac4; border-bottom: none; height: 73px;}
+.trade-tab li.cur .num{color: #fa6a56; padding: 13px 0 5px 0;}
 
-  .m-nav {
-    margin-top: 50px;
-  }
-}
 
-#dm-main {
-  height: 100%;
-  .g-mn1c {
-    height: 100%;
-    margin-left: @leftWidth;
-  }
-}
+/*数据概要*/
+.outline-table tr.bg th{height: 54px; background: #fbfbfb;}
+.outline-table tr th ,.outline-table tr td{background: #fff; border-top: 1px solid #eaeaea; text-align: center; height: 44px; }
+
+
+.table-list{ /*width: 910px; */ margin-right: -20px;}
+.table-list li{display: inline; float: left;    min-width: 308px; width: 33.333%; /*-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; min-height: 280px;*/  margin: 0 0 10px 0; }
+.table-list .table-list-li-wrap{ margin-right: 20px; min-width: 288px; min-height: 280px; background: #fff; box-shadow:0 0 10px rgba(12, 6, 14, .1);}
+.table-list .list-title{height: 52px; line-height: 52px; border-bottom: 1px solid #e0e1e2; font-size: 14px; padding-left: 10px}
+.table-list .recode-table th{text-align: left; height: 42px; line-height: 42px; background: #f4f5f6; padding: 0 10px;}
+.table-list .recode-table td{border-bottom:1px solid #ececec; padding: 0 10px; height: 36px; line-height: 36px; }
+.table-list .recode-table .overflow{min-width: 80px; width: 100%; height: 28px; overflow:hidden;text-overflow:ellipsis;
+     -webkit-line-clamp: 1; display: -webkit-box;  -webkit-box-orient: vertical; /*white-space:nowrap;*/}
+.table-list .recode-table .num-overflow{width: 50px;overflow:hidden;text-overflow:ellipsis; white-space:nowrap;}
+.table-list .recode-table tr td:last-child{text-align: right;}
+.table-list .recode-table tr.bg td{background-color: #f4f5f6; padding: 0 20px 0 10px;}
+.table-list .recode-table tr.bg td:first-child{color: #c0c0c0;}
+.table-list .secend-title{height: 42px; line-height: 42px; background: #f4f5f6; padding: 0 10px; font-size: 14px}
+.table-list .secend-title .right{color: #35bac4;}

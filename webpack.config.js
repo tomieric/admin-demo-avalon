@@ -34,7 +34,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|gif)$/,
         loader: 'url?limit=2048',
         exclude: /node_modules/
       },
@@ -50,7 +50,7 @@ module.exports = {
     // 可省略扩展名
     extensions: ['.js', '.css', '.html', ''],
     // 配置共用路径，类似于 express 的 public 目录
-    root: [path.join(__dirname, 'app/controller'), path.join(__dirname, 'app/components'),path.join(__dirname, 'app/vendor'), path.join(__dirname, 'app/global'), path.join(__dirname, 'app/api')],
+    rroot: [path.join(__dirname, 'app/controller'), path.join(__dirname, 'app/components'),path.join(__dirname, 'app/vendor'), path.join(__dirname, 'app/global'), path.join(__dirname, 'app/api')],
     // 配置别名，减少路径，类似于 require paths
     alias: {
       domReady: 'domReady/domReady.js',

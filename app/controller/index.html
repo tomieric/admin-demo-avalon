@@ -8,9 +8,14 @@
   <meta name="keywords" content="E+标准版后台管理">
   <meta name="description" content="E+标准版后台管理">
   <meta name="fragment" content="!" />
+  <style>
+    [ms-controller]{ visibility: hidden; }
+  </style>
   <!--[if lt IE9]>
-  <script src="/node_modules/es5-shim/es5-shim.min.js"></script>
-  <script src="/node_modules/html5shiv/dist/html5shiv.min.js"></script>
+  <!--<script src="/node_modules/es5-shim/es5-shim.min.js"></script>-->
+  <script src="//cdn.bootcss.com/es5-shim/4.5.8/es5-shim.min.js"></script>
+  <!--<script src="/node_modules/html5shiv/dist/html5shiv.min.js"></script>-->
+  <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <![endif]-->
   <script>
     // 兼容 ie 和 360 不支持 console
@@ -20,10 +25,11 @@
         };
     }
   </script>
-  <script src="http://rap.taobao.org/rap.plugin.js?projectId=4074"></script>
+  <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://rap.taobao.org/rap.plugin.js?projectId=4074&mode=1"></script>
 </head>
 <body ms-controller="App">
   <div ms-view=""></div>
-  <div ms-view="footer"></div>
+  <div class="footer" ms-view="footer"></div>
 </body>
 </html>

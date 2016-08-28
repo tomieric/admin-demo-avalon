@@ -1,17 +1,572 @@
-<ul class="m-nav">
-  <li>
-    <a href="#!/index/home">主页</a>
-  </li>
-  <li>
-    <a href="#!/index/staff">员工</a>
-  </li>
-  <li>
-    <a href="#!/index/setting">设置</a>
-  </li>
-  <li>
-    <a href="#!/login">登录</a>
-  </li>
-</ul>
-<div id="main">
-  <div class="g-mn1c" ms-view="home"></div>
-</div>
+
+<div class="layer" ms-controller="indexCtrl">
+            <div class="channel-box">
+                <span class="item color999">渠道：</span>
+                <ul class="channel-list clearfix" ms-class="channel-scroll:isExpandFilter" id="j-channel-list">   <!-- 内容多的时候，添加channel-scroll -->
+                    <li><label><input type="checkbox" name="all" data-checkall="#j-channel-list .checkbox" class="checkbox">全部</label></li>
+                    <li title="工业E+" ms-repeat="channelList"><label><input type="checkbox" class="checkbox" ms-duplex="channels" ms-attr-value="el.id">{{ el.name }}</label> </li>
+                </ul>
+                <a href="#" ms-click="expandFilter($event)" class="more">展开更多</a>   <!-- 收起时添加up -->
+            </div>
+            <div class="channel-btn"><a href="#" ms-click="filterData($event)" class="btn">提交</a></div>  <!-- 不可点击时a标签添加disabled -->
+        <div class="mod-item">
+            <span class="color777 f18">数据概要</span>
+            <span class="color35b pl20">{{ date }}</span>
+        </div>
+        <div class="shadow-bg">
+            <table class="outline-table">
+                <tr class="bg">
+                    <th></th>
+                    <th>注册用户数</th>
+                    <th>核身用户数</th>
+                    <th>充值金额（元）</th>
+                    <th>交易金额（元）</th>
+                    <th>提现金额（元）</th>
+                </tr>
+                <tr ms-repeat="totals">
+                    <th>{{ el.text }}</th>
+                    <td ms-class="color999: $index >1">
+                      {{ el.users.value | number(0) }}
+                      <div ms-if="$index === 2">
+                        {{ el.users.date }}
+                      </div>
+                    </td>
+                    <td ms-class="color999: $index >1">
+                      {{ el.validUsers.value | number(0)}}
+                      <div ms-if="$index === 2">
+                        {{ el.validUsers.date }}
+                      </div>
+                    </td>
+                    <td ms-class="color999: $index >1">
+                      {{ el.currency.value| number(2)}}
+                      <div ms-if="$index === 2">
+                        {{ el.currency.date }}
+                      </div>
+                    </td>
+                    <td ms-class="color999: $index >1">
+                      {{ el.trade.value | number(2)}}
+                      <div ms-if="$index === 2">
+                        {{ el.trade.date }}
+                      </div>
+                    </td>
+                    <td ms-class="color999: $index >1">
+                      {{ el.draw.value | number(2)}}
+                      <div ms-if="$index === 2">
+                        {{ el.draw.date }}
+                      </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="mod-item clearfix" id="j-profile">
+            <span class="color777 f18">数据概况</span>
+            <!--<span class="color35b pl20">2015-06-29</span>-->
+            <ul class="tab-list">
+                <!--<li>近一小时实时 </li>-->
+                <li class="cur">今日实时 </li>
+                <li>周回顾</li>
+                <li>30天回顾</li>
+            </ul>
+        </div>
+        <ul class="data-survey clearfix">
+            <li  ms-repeat="panels" class="data{{ el.theme }}">
+                <div class="shadow-bg">
+                    <div class="item">
+                        <i class="icon-bg icon{{ el.theme }}"></i>
+                        <span class="txt">{{ el.title }}</span>
+                    </div>
+                    <div class="info info{{ el.theme }}">
+                        <div class="num"><span class="j-num">{{ el.currency }}</span></div>
+                        <div class="down icon-bg">15.23%</div>
+                    </div>
+                    <div class="tips">
+                        <div class="date">前一日资产本金(元)</div> 983,452,011.30
+                    </div>
+                </div>
+            </li>
+            <li class="data1">
+                <div class="shadow-bg">
+                    <div class="item">
+                        <i class="icon-bg icon1"></i>
+                        <span class="txt">当前收益(元)</span>
+
+                    </div>
+                    <div class="info info1">
+                        <div class="num"><span class="j-num">0</span></div>
+                        <div class="up icon-bg">15.23%</div>
+                    </div>
+                    <div class="tips">
+                        <div class="date">前一日用户收益</div> 983,452,011.30
+                    </div>
+                </div>
+            </li>
+            <li class="data2">
+                <div class="shadow-bg">
+                    <div class="item">
+                        <i class="icon-bg icon2"></i>
+                        <span class="txt">当前分润(元)</span>
+                        <div class="date">昨日</div> 201130
+                    </div>
+                    <div class="info info2">
+                        <div class="num"><span class="j-num">367828</span>.56 </div>
+                        <div class="up icon-bg">15.23%</div>
+                    </div>
+                    <div class="tips">
+                        <div class="date">前一日分润合计</div> 983,452,011.30
+                    </div>
+                </div>
+            </li>
+
+            <li class="data4">
+                <div class="shadow-bg">
+                    <div class="item">
+                        <i class="icon-bg icon4"></i>
+                        <span class="txt">充值用户数</span>
+                    </div>
+                    <div class="info info4">
+                        <div class="num"><span class="j-num">367828</span>.00 </div>
+                        <div class="down icon-bg">15.23%</div>
+                    </div>
+                    <div class="tips clearfix">
+                        <div class="left fldi">
+                            <div class="date">前一日用户数</div>201130
+                        </div>
+                        <div class="right fldi">
+                            <div class="date">笔数</div> 2,011.30
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="data3">
+                <div class="shadow-bg">
+                    <div class="item">
+                        <i class="icon-bg icon3"></i>
+                        <span class="txt">直接支付(元)  </span>
+                    </div>
+                    <div class="info info3">
+                        <div class="num"><span class="j-num">367828</span>.02</div>
+                        <div class="down icon-bg">15.23%</div>
+                    </div>
+                    <div class="tips clearfix">
+                        <div class="left fldi">
+                            <div class="date">笔数</div> 201130
+                        </div>
+                        <div class="right fldi">
+                            <div class="date">用户数</div>8964201
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="data1">
+                <div class="shadow-bg">
+                    <div class="item">
+                        <i class="icon-bg icon1"></i>
+                        <span class="txt">撮合支付(元)</span>
+
+                    </div>
+                    <div class="info info1">
+                        <div class="num"><span class="j-num">367828</span>.89 </div>
+                        <div class="up icon-bg">15.23%</div>
+                    </div>
+                    <div class="tips clearfix">
+                        <div class="left fldi">
+                            <div class="date">笔数</div> 201130
+                        </div>
+                        <div class="right fldi">
+                            <div class="date">用户数</div>8964201
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="data2">
+                <div class="shadow-bg">
+                    <div class="item">
+                        <i class="icon-bg icon2"></i>
+                        <span class="txt">代扣支付(元)</span>
+                        <div class="date">昨日</div> 201130
+                    </div>
+                    <div class="info info2">
+                        <div class="num"><span class="j-num">367828</span>.50 </div>
+                        <div class="up icon-bg">15.23%</div>
+                    </div>
+                    <div class="tips clearfix">
+                        <div class="left fldi">
+                            <div class="date">笔数</div> 201130
+                        </div>
+                        <div class="right fldi">
+                            <div class="date">用户数</div>8964201
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="data4">
+                <div class="shadow-bg">
+                    <div class="item">
+                        <i class="icon-bg icon4"></i>
+                        <span class="txt">提现用户数</span>
+                    </div>
+                    <div class="info info4">
+                        <div class="num"><span class="j-num">367828</span>.00 </div>
+                        <div class="down icon-bg">15.23%</div>
+                    </div>
+                    <div class="tips clearfix">
+                        <div class="left fldi">
+                            <div class="date">前一日用户数</div>201130
+                        </div>
+                        <div class="right fldi">
+                            <div class="date">笔数</div> 2,011.30
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="mod-item clearfix" id="j-trade-nav">
+            <span class="fldi color777 f18">交易趋势</span>
+            <ul class="tab-list">
+                <!--<li>近一小时实时 </li>-->
+                <li class="cur">今日实时 </li>
+                <li>周回顾</li>
+                <li>30天回顾</li>
+            </ul>
+        </div>
+        <div class="shadow-bg mb20" id="j-trade-tab">
+            <ul class="trade-tab clearfix">
+                <li class="cur">
+                    <div class="num">75,981,854,684.00</div>
+                    <div class="title">累计成交金额（元） </div>
+                </li>
+                <li>
+                    <div class="num">854684</div>
+                    <div class="title">累计成交笔数</div>
+                </li>
+                <li>
+                    <div class="num">549</div>
+                    <div class="title">累计用户人数</div>
+                </li>
+                <li>
+                    <div class=" no-num">无实时数据</div>
+                    <div class="title">累计商户人数</div>
+                </li>
+            </ul>
+            <div class="form tc pb10">
+                <div id="j-holder" style="width: 100%; height:235px;overflow:hidden"></div>
+            </div>
+        </div>
+
+        <!--TOP 排行-->
+            <!--#
+                js回调请查看./javascript/app/index.js中 cbTopsChange函数
+            -->
+        <div class="mod-item clearfix" id="j-tops">
+            <ul class="tab-list">
+                <li class="cur">今日实时 </li>
+                <li>周回顾</li>
+                <li>30天回顾</li>
+            </ul>
+        </div>
+        <ul class="table-list clearfix" id="j-tops-list">
+            <li>
+                <div class="table-list-li-wrap">
+                    <div class="list-title">充值记录TOP5</div>
+                    <table class="recode-table j-datatables">
+                        <thead>
+                            <tr>
+                                <th width="80">用户名</th>
+                                <th width="50">次数</th>
+                                <th width="78"> 充值金额(元)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="overflow" title="钱途互联有限公司">钱途互联有限公司</div></td>
+                                <td><div class="num-overflow" title="10000">10000</div></td>
+                                <td>981,854,684.00</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="广东优迈通信商务服务有限公司">广东优迈通信商务服务有限公司</div></td>
+                                <td><div class="num-overflow" title="7000">7000</div></td>
+                                <td>981,854,684.02</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="李明">李明</div></td>
+                                <td><div class="num-overflow" title="10000">10000</div></td>
+                                <td>1,854,684.00</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="赵敏">赵敏</div></td>
+                                <td><div class="num-overflow" title="10000">10000</div></td>
+                                <td>854,684.00</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="李小龙">李小龙</div></td>
+                                <td><div class="num-overflow" title="400">400</div></td>
+                                <td>854,684.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="table-list-li-wrap">
+                    <div class="list-title">付款记录TOP5</div>
+                    <table class="recode-table j-datatables">
+                        <thead>
+                            <tr>
+                                <th width="80">用户名</th>
+                                <th width="50">次数</th>
+                                <th width="78">付款金额(元)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="overflow" title="钱途互联有限公司">钱途互联有限公司</div></td>
+                                <td><div class="num-overflow" title="10000">10000</div></td>
+                                <td>981,854,684.00</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="广东优迈通信商务服务有限公司">广东优迈通信商务服务有限公司</div></td>
+                                <td><div class="num-overflow" title="7000">7000</div></td>
+                                <td>981,854,684.02</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="李明">李明</div></td>
+                                <td><div class="num-overflow" title="10000">10000</div></td>
+                                <td>1,854,684.00</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="赵敏">赵敏</div></td>
+                                <td><div class="num-overflow" title="10000">10000</div></td>
+                                <td>854,684.00</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="李小龙">李小龙</div></td>
+                                <td><div class="num-overflow" title="400">400</div></td>
+                                <td>854,684.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="table-list-li-wrap">
+                    <div class="list-title">收款记录TOP5</div>
+                    <table class="recode-table j-datatables">
+                        <thead>
+                            <tr>
+                                <th width="80">用户名</th>
+                                <th width="50">次数</th>
+                                <th width="78">收款金额(元)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="overflow" title="钱途互联有限公司">钱途互联有限公司</div></td>
+                                <td><div class="num-overflow" title="10000">10000</div></td>
+                                <td>981,854,684.00</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="广东优迈通信商务服务有限公司">广东优迈通信商务服务有限公司</div></td>
+                                <td><div class="num-overflow" title="7000">7000</div></td>
+                                <td>981,854,684.02</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="李明">李明</div></td>
+                                <td><div class="num-overflow" title="10000">10000</div></td>
+                                <td>1,854,684.00</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="赵敏">赵敏</div></td>
+                                <td><div class="num-overflow" title="10000">10000</div></td>
+                                <td>854,684.00</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="李小龙">李小龙</div></td>
+                                <td><div class="num-overflow" title="400">400</div></td>
+                                <td>854,684.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="table-list-li-wrap">
+                    <div class="list-title">提现记录TOP5</div>
+                    <table class="recode-table j-datatables">
+                        <thead>
+                            <tr>
+                                <th width="80">用户名</th>
+                                <th width="50">次数</th>
+                                <th width="78">提现金额(元)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="overflow" title="钱途互联有限公司">钱途互联有限公司</div></td>
+                                <td><div class="num-overflow" title="10000">10000</div></td>
+                                <td>981,854,684.00</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="广东优迈通信商务服务有限公司">广东优迈通信商务服务有限公司</div></td>
+                                <td><div class="num-overflow" title="7000">7000</div></td>
+                                <td>981,854,684.02</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="李明">李明</div></td>
+                                <td><div class="num-overflow" title="10000">10000</div></td>
+                                <td>1,854,684.00</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="赵敏">赵敏</div></td>
+                                <td><div class="num-overflow" title="10000">10000</div></td>
+                                <td>854,684.00</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow" title="李小龙">李小龙</div></td>
+                                <td><div class="num-overflow" title="400">400</div></td>
+                                <td>854,684.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="table-list-li-wrap">
+                    <div class="list-title">资产记录TOP5</div>
+                    <table class="recode-table j-datatables only-one">
+                        <thead>
+                        <tr>
+                            <th width="160">用户名</th>
+                            <!--<th width="50">次数</th>-->
+                            <th width="104">资产金额(元)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><div class="overflow" style="width: 160px" title="钱途互联有限公司">钱途互联有限公司</div></td>
+                            <!--<td><div class="num-overflow" title="10000">10000</div></td>-->
+                            <td>981,854,684.00</td>
+                        </tr>
+                        <tr>
+                            <td><div class="overflow" style="width: 160px" title="广东优迈通信商务服务有限公司"><div>广东优迈通信商务服务有限公司</div></div></td>
+                            <!--<td><div class="num-overflow" title="7000">7000</div></td>-->
+                            <td>981,854,684.02</td>
+                        </tr>
+                        <tr>
+                            <td><div class="overflow" style="width: 160px" title="李明">李明</div></td>
+                            <!--<td><div class="num-overflow" title="10000">10000</div></td>-->
+                            <td>1,854,684.00</td>
+                        </tr>
+                        <tr>
+                            <td><div class="overflow" style="width: 160px" title="赵敏">赵敏</div></td>
+                            <!--<td><div class="num-overflow" title="10000">10000</div></td>-->
+                            <td>854,684.00</td>
+                        </tr>
+                        <tr>
+                            <td><div class="overflow" style="width: 160px" title="李小龙">李小龙</div></td>
+                            <!--<td><div class="num-overflow" title="400">400</div></td>-->
+                            <td>854,684.00</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="table-list-li-wrap">
+                    <div class="list-title">短信发送统计</div>
+                    <div class="cleafix secend-title">
+                        <div class="fldi">今日短信发送量</div>
+                        <div class="right frdi">1332006828648 </div>
+                    </div>
+                    <table class="recode-table">
+                        <thead>
+                            <tr class="bg">
+                                <td width="160">类型</td>
+                                <td width="104"> 发送量</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="overflow">注册短信数</div></td>
+                                <td>5464794</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow">提现短信数</div></td>
+                                <td>542132</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow">核身短信数</div></td>
+                                <td>354412</td>
+                            </tr>
+                            <tr>
+                                <td><div class="overflow">交易短信数</div></td>
+                                <td>46415</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+
+        </ul>
+        <!-- JS模板 -->
+        <script type="text/html" id="j-tmpl-topslist">
+            {{each list as ls }}
+                {{ if ls.type == 1}}
+                <div class="table-list-li-wrap">
+                <li>
+                    <div class="list-title">短信发送统计</div>
+                    <div class="cleafix secend-title">
+                        <div class="fldi">今日短信发送量</div>
+                        <div class="right frdi">{{ ls.msg_count * index / 2 }} </div>
+                    </div>
+                    <table class="recode-table">
+                        <thead>
+                            <tr class="bg">
+                                <td width="160">类型</td>
+                                <td width="104">发送量</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {{ each ls.list as item }}
+                        <tr>
+                            <td><div class="overflow">{{ item.user }}</div></td>
+                            <td>{{ item.currency * index / 2 }}</td>
+                        </tr>
+                        {{ /each }}
+                        </tbody>
+
+                    </table>
+                </li>
+                </div>
+                {{ else }}
+                <div class="table-list-li-wrap">
+                <li>
+                    <div class="list-title">{{ ls.title }}</div>
+                    <table class="recode-table j-datatables">
+                        <thead>
+                            <tr>
+                                <th width="80">用户名</th>
+                                <th width="50">次数</th>
+                                <th width="78"> {{ ls.label }}(元)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {{ each ls.list as item }}
+                        <tr>
+                            <td><div class="overflow">{{ item.user }}</div></td>
+                            <td><div class="num-overflow">{{ item.count }}</div></td>
+                            <td>{{ item.currency }}</td>
+                        </tr>
+                        {{ /each }}
+                        </tbody>
+
+                    </table>
+                </li>
+                </div>
+                {{/if}}
+            {{/each}}
+        </script>
+    </div>

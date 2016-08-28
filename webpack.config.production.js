@@ -26,7 +26,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|gif)$/,
         loader: 'url?limit=25000',
         exclude: /node_modules/
       },
@@ -45,7 +45,9 @@ module.exports = {
       jquery: 'jquery/jquery.js',
       avalon: 'avalon/avalon.shim.js',
       mmState: 'mm-router/mmState.js',
-      mmStateDemand: 'mm-router/mmState.demand.js'
+      mmStateDemand: 'mm-router/mmState.demand.js',
+      mmValidation: 'mm-validation/avalon.validation.js',
+      api: 'api.js'
     }
   },
   plugins: [

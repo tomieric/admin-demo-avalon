@@ -1,5 +1,5 @@
 // 表单验证
-var mmValidation  = require('mmValidation')
+//var mmValidation  = require('mmValidation')
 var validationVM;
 // API
 var API = require('api')
@@ -11,6 +11,14 @@ var Cookie = require('cookie_js')
 var imgLogo = require('images/login-logo.png')
 var imgBg = require('images/login-bg.jpg')
 var imgCode = require('images/yzm.jpg')
+
+// * --------
+// * 控制台输出登录用户名和密码
+console.group('Login:')
+console.log('%cUser:%s', 'color:red;font-size:30px', 'frontui')
+console.log('%cPassWord:%s', 'color:red;font-size:30px', 'www.frontpay.cn')
+console.groupEnd('login:')
+// -------- *//
 
 // 显示错误
 function showError(invalid, reason) {
@@ -73,8 +81,8 @@ var vmLogin = avalon.define({
           else if(vmLogin.username.trim() === res.username && vmLogin.password.trim() === res.password) {
             showError(!1, '')
             // cookie
-            Cookie.set('login', 1, { expires: 1});
-            avalon.router.go('index.home', mmState.currentState.params)
+            Cookie.set('login', 1, { expires: 0.2});
+            avalon.router.navigate('home/index', { replace: true })
 
           } else {
             showError(!0, '账户名或密码错误')
@@ -100,6 +108,7 @@ module.exports = {
   template: require('./login.html'),
   // 控制器
   controller: avalon.controller('login', function($ctrl) {
+    require('less/public.less')
     // 附加样式
     require('./login.less')
 
@@ -107,7 +116,7 @@ module.exports = {
     $ctrl.$onEnter = function(param, rs) {
       // cookie 已经登录
       if(Cookie.get('login')) {
-        avalon.router.go('index.home')
+        avalon.router.navigate('home/index', { replace: true })
         return;
       }
       rs()

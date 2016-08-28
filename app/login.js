@@ -14,3 +14,15 @@ avalon.state('login', {
     })
   }
 })
+
+// 退出
+avalon.state('logout', {
+  url: '/logout',
+  views: {
+    '': avalon.demandLoad(function(deferred) {
+      require.ensure([], function() {
+        deferred.resolve(require('login/logout.js'))
+      })
+    })
+  }
+})

@@ -1,7 +1,7 @@
 var $ = require('jquery')
 
 var mocks = {
-  'login': 'http://rap.taobao.org/mockjs/4074/get/data.json?action=login'
+  'login': 'http://rap.taobao.org/mockjs/4074/api/login'
 };
 
 var Api = function(action) {

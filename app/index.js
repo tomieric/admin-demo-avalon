@@ -1,28 +1,56 @@
 // 首页框架
-avalon.state('index', {
+avalon.state('home', {
   abstract: true,
-  url: '/index',
+  url: '/home',
   views: {
-    'AppView': avalon.demandLoad(function (deferred) {
+    '': avalon.demandLoad(function (deferred) {
+      console.log('xxxxx')
       require.ensure([], function() {
-        deferred.resolve(require('index/index.js'))
+        deferred.resolve(require('home/index.js'))
       })
-    })
-  },
+    }),
     'footer@': avalon.demandLoad(function(deferred) {
       require.ensure([], function() {
         deferred.resolve(require('public/footer.js'))
       })
     })
+  }
 })
 
-avalon.state('index.home', {
-  url: '/home',
+avalon.state('home.index', {
+  url: '/index',
   views: {
-    'home': avalon.demandLoad(function (deferred) {
+    'content': avalon.demandLoad(function (deferred) {
       require.ensure([], function() {
-        deferred.resolve(require('home/home.js'))
+        deferred.resolve(require('index/index.js'))
       })
     })
   }
 })
+
+avalon.state('home.workspace', {
+  url: '/workspace',
+  views: {
+    'content': avalon.demandLoad(function (deferred) {
+      require.ensure([], function() {
+        deferred.resolve(require('workspace/index.js'))
+      })
+    })
+  }
+})
+
+avalon.state('home.common', {
+  url: '/{path}',
+  onEnter: function(path) {
+      var vm = avalon.define({
+          $id: 'channel',
+          channel: ''
+        });
+      vm.channel = path;
+  },
+  views: {
+    'content': {
+      template: '<div class="layer" ms-controller="channel">{{ channel }}</div>'
+    }
+  }
+});
