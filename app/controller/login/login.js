@@ -1,5 +1,5 @@
 // 表单验证
-//var mmValidation  = require('mmValidation')
+var mmValidation  = require('mmValidation')
 var validationVM;
 // API
 var API = require('api')

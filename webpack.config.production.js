@@ -39,12 +39,13 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.css', '.html', ''],
-    root: [path.join(__dirname, 'app/controller'), path.join(__dirname, 'app/components'), path.join(__dirname, 'app/vendor'), path.join(__dirname, 'app/global')],
+    root: [path.join(__dirname, 'app/controller'), path.join(__dirname, 'app/components'),path.join(__dirname, 'app/vendor'), path.join(__dirname, 'app/global'), path.join(__dirname, 'app/api')],
     alias: {
       domReady: 'domReady/domReady.js',
       jquery: 'jquery/jquery.js',
       avalon: 'avalon/avalon.shim.js',
       mmState: 'mm-router/mmState.js',
+      mmPromise: 'mm-router/mmPromise.js',
       mmStateDemand: 'mm-router/mmState.demand.js',
       mmValidation: 'mm-validation/avalon.validation.js',
       api: 'api.js'
